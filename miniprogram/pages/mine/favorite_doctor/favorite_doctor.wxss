@@ -1,0 +1,15 @@
+/* pages/mine/favorite_doctor.wxss */
+.favorite-doctor {
+  padding-bottom: var(--spacing-lg);
+}
+
+.favorite-doctor__body {
+  padding: var(--spacing-md);
+}
+
+.favorite-doctor__tip {
+  padding: 80rpx 0;
+  text-align: center;
+  font-size: var(--font-small);
+  color: var(--color-text-placeholder);
+}

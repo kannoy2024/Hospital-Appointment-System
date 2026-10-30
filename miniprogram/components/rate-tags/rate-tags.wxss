@@ -1,0 +1,21 @@
+.rate-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  padding: 16rpx 0;
+}
+
+.rate-tags__item {
+  padding: 12rpx 24rpx;
+  border-radius: 32rpx;
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  background: #F5F5F5;
+  border: 2rpx solid transparent;
+}
+
+.rate-tags__item--active {
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+}

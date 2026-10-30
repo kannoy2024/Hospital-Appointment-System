@@ -1,0 +1,36 @@
+<view class="doctor-card" bindtap="onTap">
+  <view class="doctor-card__avatar">
+    <van-image
+      wx:if="{{ doctor.avatarUrl }}"
+      class="doctor-card__avatar-img"
+      src="{{ doctor.avatarUrl }}"
+      width="96rpx"
+      height="96rpx"
+      round
+      fit="cover"
+    />
+    <van-icon wx:else name="manager" size="32px" color="#00B894" />
+  </view>
+  <view class="doctor-card__body">
+    <view class="doctor-card__row">
+      <text class="doctor-card__name">{{ doctor.name }}</text>
+      <text class="doctor-card__title">{{ doctor.title }}</text>
+      <status-tag
+       wx:if="{{ showStatus }}" 
+       text="{{ doctor.hasSlot ? '有号' : '已满' }}"
+        type="{{ doctor.hasSlot ? 'success':'default' }}" />
+    </view>
+    <text wx:if="{{ showDept }}" class="doctor-card__subtitle">{{ deptName }}</text>
+    <text wx:else class="doctor-card__subtitle">{{ doctor.intro }}</text>
+    <view class="doctor-card__meta">
+      <van-icon name="star" size="12px" color="#FFB020" />
+      <text>{{ doctor.rating }}</text>
+      <text class="doctor-card__split">|</text>
+      <text>问诊量 {{ doctor.consultCount }}</text>
+    </view>
+  </view>
+  <view wx:if="{{ showFav }}" class="doctor-card__fav" catchtap="onFavTap">
+  <van-icon name="like" size="20px" color="#FF4D4F" />
+</view>
+  <van-icon name="arrow" size="14px" color="#ccc" />
+</view>

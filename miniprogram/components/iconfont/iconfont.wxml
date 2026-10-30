@@ -1,0 +1,1 @@
+<text class="iconfont" style="font-size: {{ size }}rpx; color: {{ color }};">{{ char }}</text>

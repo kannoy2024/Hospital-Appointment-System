@@ -1,0 +1,15 @@
+{
+  "name": "miniprogram-scaffold",
+  "version": "1.0.0",
+  "description": "Generic WeChat miniprogram scaffold",
+  "dependencies": {
+    "@vant/weapp": "^1.11.6"
+  },
+  "scripts": {
+    "build:npm": "node scripts/build-npm.js",
+    "build": "npm run build:npm"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}

@@ -1,0 +1,25 @@
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.schedule-list__search {
+  padding: 24rpx 24rpx 16rpx;
+}
+
+.schedule-list__body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.schedule-list__main {
+  flex: 1;
+  padding: 16rpx 24rpx;
+}
+
+.schedule-list__cards {
+  padding-bottom: 32rpx;
+}

@@ -1,0 +1,52 @@
+
+//页面展示的框架内容，基本上就是template内容
+<view class="page page--bottom-bar">
+  <page-nav title="就诊人档案" />
+
+  <view class="patient-list">
+    <view wx:if="{{ loading }}" class="patient-list__tip">加载中…</view>
+
+    <view wx:elif="{{ patients.length === 0 }}" class="patient-list__empty">
+      <van-icon name="friends-o" size="56px" color="#ddd" />
+      <text class="patient-list__empty-text">还没有就诊人，添加一个吧</text>
+    </view>
+
+    <view wx:else class="patient-list__items">
+      <view wx:for="{{ patients }}" wx:key="id" class="patient-card card">
+        <view class="patient-card__head">
+          <text class="patient-card__name">{{ item.name }}</text>
+          <van-tag wx:if="{{ item.isDefault }}" type="primary" round>默认</van-tag>
+        </view>
+        <view class="patient-card__row">
+          <text class="patient-card__label">性别</text>
+          <text class="patient-card__value">{{ item.genderText }}</text>
+        </view>
+        <view class="patient-card__row">
+          <text class="patient-card__label">电话</text>
+          <text class="patient-card__value">{{ item.phone }}</text>
+        </view>
+        <view wx:if="{{ item.idCardMasked }}" class="patient-card__row">
+          <text class="patient-card__label">身份证</text>
+          <text class="patient-card__value">{{ item.idCardMasked }}</text>
+        </view>
+        <view class="patient-card__actions">
+          <text
+            wx:if="{{ !item.isDefault }}"
+            class="patient-card__action"
+            data-id="{{ item.id }}"
+            bindtap="onSetDefault"
+          >设为默认</text>
+          <text class="patient-card__action" data-id="{{ item.id }}" bindtap="onEdit">编辑</text>
+          <text
+            class="patient-card__action patient-card__action--danger"
+            data-id="{{ item.id }}"
+            data-name="{{ item.name }}"
+            bindtap="onDelete"
+          >删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <bottom-bar wx:if="{{ !loading }}" text="新增就诊人" bind:confirm="onAdd" />
+</view>

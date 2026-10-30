@@ -1,0 +1,19 @@
+<view class="page legal-page">
+  <page-nav title="{{ doc.title }}" />
+  <view class="legal-page__meta">更新日期：{{ doc.updateDate }}</view>
+  <view class="legal-page__card">
+    <view
+      wx:for="{{ doc.sections }}"
+      wx:key="heading"
+      class="legal-page__section"
+    >
+      <text class="legal-page__heading">{{ item.heading }}</text>
+      <text
+        wx:for="{{ item.paragraphs }}"
+        wx:for-item="para"
+        wx:key="*this"
+        class="legal-page__paragraph"
+      >{{ para }}</text>
+    </view>
+  </view>
+</view>

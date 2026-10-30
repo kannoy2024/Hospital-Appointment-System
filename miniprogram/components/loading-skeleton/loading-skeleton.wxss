@@ -1,0 +1,3 @@
+.loading-skeleton {
+  padding: 24rpx;
+}

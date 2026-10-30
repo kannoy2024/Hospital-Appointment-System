@@ -1,0 +1,72 @@
+.pay-drawer {
+  padding: 48rpx 40rpx calc(32rpx + env(safe-area-inset-bottom));
+}
+
+.pay-drawer__channel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 48rpx;
+}
+
+.pay-drawer__logo {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pay-drawer__logo--balance {
+  background: linear-gradient(135deg, #34d399, #00B894);
+}
+
+.pay-drawer__logo--wechat {
+  background: linear-gradient(135deg, #4ade80, #16a34a);
+}
+
+.pay-drawer__logo--alipay {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+}
+
+.pay-drawer__name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.pay-drawer__amount-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 48rpx;
+}
+
+.pay-drawer__amount-label {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+}
+
+.pay-drawer__amount {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.pay-drawer__balance {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+}
+
+.pay-drawer__btn {
+  height: 88rpx !important;
+  font-size: 30rpx !important;
+}

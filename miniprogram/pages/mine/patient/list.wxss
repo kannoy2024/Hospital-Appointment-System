@@ -1,0 +1,60 @@
+/* 样式设计 */
+.patient-list {
+  padding: var(--spacing-md);
+  padding-bottom: 160rpx;
+}
+.patient-list__tip,
+.patient-list__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+  color: var(--color-text-placeholder);
+}
+.patient-list__empty-text {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-subtitle);
+  color: var(--color-text-placeholder);
+}
+.patient-card {
+  margin-bottom: var(--spacing-md);
+}
+.patient-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+.patient-card__name {
+  font-size: var(--font-title);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.patient-card__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rpx 0;
+  font-size: var(--font-body);
+}
+.patient-card__label {
+  color: var(--color-text-secondary);
+}
+.patient-card__value {
+  color: var(--color-text);
+}
+.patient-card__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1rpx solid var(--color-border);
+}
+.patient-card__action {
+  font-size: var(--font-caption);
+  color: var(--color-primary);
+}
+.patient-card__action--danger {
+  color: var(--color-danger);
+}

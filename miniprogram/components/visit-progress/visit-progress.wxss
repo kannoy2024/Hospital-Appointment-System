@@ -1,0 +1,54 @@
+.visit-progress {
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 8rpx 8rpx;
+}
+
+.visit-progress__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.visit-progress__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 14rpx;
+  left: 50%;
+  width: 100%;
+  height: 4rpx;
+  background: #e5e7eb;
+  z-index: 0;
+}
+
+.visit-progress__item--done:not(:last-child)::after {
+  background: #00B894;
+}
+
+.visit-progress__dot {
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  background: #e5e7eb;
+  position: relative;
+  z-index: 1;
+}
+
+.visit-progress__item--done .visit-progress__dot,
+.visit-progress__item--active .visit-progress__dot {
+  background: #00B894;
+}
+
+.visit-progress__label {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.visit-progress__item--active .visit-progress__label,
+.visit-progress__item--done .visit-progress__label {
+  color: #00B894;
+  font-weight: 600;
+}

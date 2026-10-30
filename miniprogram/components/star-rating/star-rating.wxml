@@ -1,0 +1,3 @@
+<view class="star-rating">
+  <van-rate value="{{ value }}" readonly="{{ readonly }}" size="{{ size }}" color="#FFB020" bind:change="onChange" />
+</view>

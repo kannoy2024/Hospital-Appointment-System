@@ -1,0 +1,49 @@
+<view class="page page--bottom-bar confirm">
+  <page-nav title="预约挂号" />
+  <scroll-view class="confirm__scroll" scroll-y>
+    <view class="confirm__content">
+      <doctor-header doctor="{{ doctor }}" />
+      <view class="card card--flat confirm__info">
+        <view class="confirm__row">
+          <text class="confirm__label">就诊时间</text>
+          <text class="confirm__value confirm__value--primary">{{ timeText }}</text>
+        </view>
+        <view class="confirm__row">
+          <text class="confirm__label">挂号费用</text>
+          <text class="confirm__value confirm__value--fee">{{ feeText }}</text>
+        </view>
+      </view>
+      <view class="card card--flat">
+        <!-- 就诊人下拉选择 -->
+        <picker mode="selector" range="{{ patientNames }}" value="{{ patientIndex }}" bindchange="onPatientChange">
+          <view class="confirm__picker">
+            <text class="confirm__label">就诊人</text>
+            <view class="confirm__picker-value">
+              <text class="confirm__value confirm__value--primary">
+                {{ selectedPatient ? selectedPatient.name : '请选择就诊人' }}
+              </text>
+              <van-icon name="arrow-down" size="14px" color="#999" />
+            </view>
+          </view>
+        </picker>
+
+        <!-- 选中就诊人的信息回显 -->
+        <view wx:if="{{ selectedPatient }}" class="confirm__row">
+          <text class="confirm__label">联系电话</text>
+          <text class="confirm__value">{{ selectedPatient.phone }}</text>
+        </view>
+
+        <!-- 快捷新增 -->
+        <view class="confirm__add-patient" bindtap="onAddPatient">
+          + 新增就诊人
+        </view>
+      </view>
+      <view class="card">
+        <text class="confirm__label">备注</text>
+        <van-field value="{{ remark }}" type="textarea" placeholder="请输入备注（选填）" autosize border="{{ false }}" bind:change="onRemarkInput" />
+      </view>
+      <view class="confirm__tip">提交后可在订单详情页选择支付方式，请于 30 分钟内完成支付，超时号源将自动释放。</view>
+    </view>
+  </scroll-view>
+  <bottom-bar text="提交订单" price="{{ feeText }}" bind:confirm="onConfirm" />
+</view>

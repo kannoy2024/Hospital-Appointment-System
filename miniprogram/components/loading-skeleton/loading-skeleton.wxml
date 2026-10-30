@@ -1,0 +1,4 @@
+<view wx:if="{{ loading }}" class="loading-skeleton">
+  <van-skeleton wx:for="{{ rows }}" wx:key="*this" title row="2" />
+</view>
+<slot wx:else />

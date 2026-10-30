@@ -1,0 +1,74 @@
+.pay-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid var(--color-border);
+}
+
+.pay-item:last-child {
+  border-bottom: none;
+}
+
+.pay-item--active .pay-item__name {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.pay-item__left {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.pay-item__icon {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.pay-item__icon--wechat { background: #16a34a; }
+.pay-item__icon--alipay { background: #2563eb; }
+.pay-item__icon--balance { background: #00B894; }
+
+.pay-item__name {
+  font-size: 28rpx;
+  color: var(--color-text);
+}
+
+.pay-item__desc {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: var(--color-text-secondary);
+}
+
+.pay-item__radio {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  border: 2rpx solid #ccc;
+}
+
+.pay-item__radio--on {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  box-shadow: inset 0 0 0 6rpx #fff;
+}
+
+/* 已占位但本轮不实现的渠道（当前是支付宝）：整体降透明，并禁用点击反馈 */
+.pay-item--disabled {
+  opacity: 0.45;
+}
+
+.pay-item--disabled .pay-item__radio {
+  background: #f2f3f5;
+  border-style: dashed;
+}

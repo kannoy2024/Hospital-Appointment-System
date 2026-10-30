@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "page-nav": "/components/page-nav/page-nav",
+    "doctor-card": "/components/doctor-card/doctor-card",
+    "empty-state": "/components/empty-state/empty-state"
+  },
+  "navigationStyle": "custom"
+}

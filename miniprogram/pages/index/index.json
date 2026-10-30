@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "search-bar": "/components/search-bar/search-bar",
+    "banner-swiper": "/components/banner-swiper/banner-swiper",
+    "triage-entry-card": "/components/triage-entry-card/triage-entry-card",
+    "section-title": "/components/section-title/section-title",
+    "dept-grid": "/components/dept-grid/dept-grid",
+    "doctor-card": "/components/doctor-card/doctor-card"
+  },
+  "navigationStyle": "custom"
+}

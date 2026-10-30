@@ -1,0 +1,72 @@
+.doctor-card {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 28rpx;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--spacing-sm);
+}
+
+.doctor-card__avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.doctor-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.doctor-card__row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 8rpx;
+}
+
+.doctor-card__name {
+  font-size: var(--font-subtitle);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.doctor-card__title {
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+}
+
+.doctor-card__subtitle {
+  display: block;
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.doctor-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: var(--font-small);
+  color: var(--color-text-placeholder);
+}
+
+.doctor-card__split {
+  color: var(--color-border);
+}
+
+.doctor-card__fav {
+  padding: 8rpx;
+  margin-right: 8rpx;
+  flex-shrink: 0;
+}

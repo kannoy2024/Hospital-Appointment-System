@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "page-nav": "/components/page-nav/page-nav",
+    "doctor-header": "/components/doctor-header/doctor-header",
+    "date-strip": "/components/date-strip/date-strip",
+    "time-slot-grid": "/components/time-slot-grid/time-slot-grid",
+    "bottom-bar": "/components/bottom-bar/bottom-bar"
+  },
+  "navigationStyle": "custom"
+}

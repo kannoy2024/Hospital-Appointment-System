@@ -1,0 +1,44 @@
+@import '../../styles/pay.wxss';
+
+.rx-detail {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rx-detail__scroll {
+  flex: 1;
+  padding: 0 32rpx calc(180rpx + env(safe-area-inset-bottom));
+}
+
+.rx-detail__summary {
+  margin-top: 24rpx;
+  padding: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rx-detail__status {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.rx-detail__amount {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.card__title {
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 16rpx;
+}
+
+.rx-detail__footer {
+  padding: 16rpx 32rpx;
+  background: var(--color-surface);
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.06);
+}

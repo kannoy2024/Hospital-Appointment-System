@@ -1,0 +1,58 @@
+<view class="page about-page">
+  <page-nav title="关于我们" />
+
+  <view class="about-hero card">
+    <view class="about-hero__logo">
+      <van-icon name="service" size="48px" color="#00B894" />
+    </view>
+    <text class="about-hero__name">{{ info.appName }}</text>
+    <text class="about-hero__slogan">{{ info.slogan }}</text>
+    <text class="about-hero__version">版本 {{ info.version }}</text>
+  </view>
+
+  <view class="card about-block">
+    <view class="about-block__title">平台简介</view>
+    <text class="about-block__text">{{ info.intro }}</text>
+  </view>
+
+  <view class="card about-block">
+    <view class="about-block__title">医院信息</view>
+    <view class="about-row">
+      <text class="about-row__label">医院名称</text>
+      <text class="about-row__value">{{ info.hospital.name }}</text>
+    </view>
+    <view class="about-row">
+      <text class="about-row__label">医院等级</text>
+      <text class="about-row__value">{{ info.hospital.level }}</text>
+    </view>
+    <view class="about-row">
+      <text class="about-row__label">医院地址</text>
+      <text class="about-row__value">{{ info.hospital.address }}</text>
+    </view>
+    <view class="about-row about-row--tap" bindtap="onCallPhone">
+      <text class="about-row__label">咨询电话</text>
+      <text class="about-row__value about-row__value--link">{{ info.hospital.phone }}</text>
+    </view>
+    <view class="about-row">
+      <text class="about-row__label">门诊时间</text>
+      <text class="about-row__value">{{ info.hospital.hours }}</text>
+    </view>
+    <view class="about-row">
+      <text class="about-row__label">官方网站</text>
+      <text class="about-row__value">{{ info.hospital.website }}</text>
+    </view>
+  </view>
+
+  <view class="card about-block about-links">
+    <view class="about-link" bindtap="onOpenAgreement">
+      <text>用户协议</text>
+      <van-icon name="arrow" size="14px" color="#ccc" />
+    </view>
+    <view class="about-link" bindtap="onOpenPrivacy">
+      <text>隐私政策</text>
+      <van-icon name="arrow" size="14px" color="#ccc" />
+    </view>
+  </view>
+
+  <text class="about-footer">{{ info.copyright }}</text>
+</view>

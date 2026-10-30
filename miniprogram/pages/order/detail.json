@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "page-nav": "/components/page-nav/page-nav",
+    "visit-progress": "/components/visit-progress/visit-progress",
+    "order-status-header": "/components/order-status-header/order-status-header",
+    "detail-list": "/components/detail-list/detail-list",
+    "van-button": "@vant/weapp/button/index",
+    "pay-drawer": "/components/pay-drawer/index",
+    "pay-sheet": "/components/pay-sheet/index"
+  },
+  "navigationStyle": "custom"
+}

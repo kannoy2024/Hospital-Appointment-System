@@ -1,0 +1,30 @@
+<view class="page page--tab home">
+  <view class="home__header" style="padding-top: {{ statusBarHeight }}px">
+    <view class="home__header-inner">
+      <text class="home__title">临鸣市第一人民医院</text>
+      <search-bar value="{{ keyword }}" placeholder="搜索科室、医生" bind:change="onSearchChange" bind:search="onSearch" />
+    </view>
+  </view>
+
+  <scroll-view class="home__body" scroll-y>
+    <view class="home__content">
+      <banner-swiper />
+      <triage-entry-card />
+      <view class="section-block">
+        <section-title title="科室导航" more bind:more="onMoreDept" />
+        <dept-grid list="{{ departments }}" bind:select="onDeptSelect" />
+      </view>
+      <view class="section-block">
+        <section-title title="知名专家" more bind:more="onMoreDoctor" />
+        <view class="home__doctors">
+          <doctor-card
+            wx:for="{{ doctors }}"
+            wx:key="id"
+            doctor="{{ item }}"
+            bind:tap="onDoctorTap"
+          />
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

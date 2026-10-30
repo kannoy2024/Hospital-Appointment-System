@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "status-tag": "/components/status-tag/status-tag",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-image": "@vant/weapp/image/index"
+  }
+}

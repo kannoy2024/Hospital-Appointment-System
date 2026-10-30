@@ -1,0 +1,32 @@
+<view class="page page--tab schedule-list">
+  <page-nav title="科室" back="{{ false }}" />
+  <view class="schedule-list__search">
+    <search-bar
+      value="{{ keyword }}"
+      placeholder="搜索科室、医生"
+      bind:change="onSearchChange"
+      bind:search="onSearch"
+    />
+  </view>
+  <view class="schedule-list__body">
+    <dept-sidebar
+      list="{{ departments }}"
+      active-id="{{ activeDeptId }}"
+      bind:change="onDeptChange"
+    />
+    <scroll-view class="schedule-list__main" scroll-y>
+      <loading-skeleton rows="{{ 3 }}" loading="{{ loading }}">
+        <view wx:if="{{ doctors.length }}" class="schedule-list__cards">
+          <doctor-card
+            wx:for="{{ doctors }}"
+            wx:key="id"
+            doctor="{{ item }}"
+            show-dept="{{ isGlobalSearch }}"
+            bind:tap="onDoctorTap"
+          />
+        </view>
+        <empty-state wx:else description="{{ keyword ? '未找到相关医生' : '暂无医生排班' }}" />
+      </loading-skeleton>
+    </scroll-view>
+  </view>
+</view>

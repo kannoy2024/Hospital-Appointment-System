@@ -1,0 +1,24 @@
+<view class="page favorite-doctor">
+  <page-nav title="医生收藏" />
+
+  <view class="favorite-doctor__body">
+    <view wx:if="{{ loading }}" class="favorite-doctor__tip">加载中…</view>
+
+    <empty-state
+      wx:elif="{{ favorites.length === 0 }}"
+      description="还没有收藏的医生"
+    />
+
+    <view wx:else class="favorite-doctor__list">
+      <doctor-card
+        wx:for="{{ favorites }}"
+        wx:key="favoriteId"
+        doctor="{{ item.doctor }}"
+        show-status="{{ false }}"
+        show-fav="{{ true }}"
+        bind:tap="onDoctorTap"
+        bind:unfav="onUnfav"
+      />
+    </view>
+  </view>
+</view>

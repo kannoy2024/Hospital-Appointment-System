@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('../../assets/font/iconfont.ttf') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  line-height: 1;
+  display: inline-block;
+}

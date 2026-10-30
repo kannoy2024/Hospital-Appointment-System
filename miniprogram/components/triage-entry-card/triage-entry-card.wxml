@@ -1,0 +1,10 @@
+<view class="triage-entry" bindtap="onTap">
+  <view class="triage-entry__icon">
+    <van-icon name="service" size="28px" color="#00B894" />
+  </view>
+  <view class="triage-entry__body">
+    <text class="triage-entry__title">AI 智能导诊</text>
+    <text class="triage-entry__desc">描述症状，一句话找对科室</text>
+  </view>
+  <van-icon class="triage-entry__arrow" name="arrow" color="#CCCCCC" size="16px" />
+</view>

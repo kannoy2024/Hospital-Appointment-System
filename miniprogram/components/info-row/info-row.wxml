@@ -1,0 +1,7 @@
+<view class="info-row" bindtap="onTap">
+  <text class="info-row__label">{{ label }}</text>
+  <view class="info-row__right">
+    <text class="info-row__value {{ !value ? 'info-row__value--placeholder' : '' }}">{{ value || placeholder }}</text>
+    <van-icon wx:if="{{ arrow }}" name="arrow" size="14px" color="#ccc" />
+  </view>
+</view>

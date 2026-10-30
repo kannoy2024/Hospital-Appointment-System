@@ -1,0 +1,80 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/schedule/list",
+    "pages/triage/index",
+    "pages/triage/result",
+    "pages/schedule/detail",
+    "pages/appointment/confirm",
+    "pages/order/list",
+    "pages/order/detail",
+    "pages/order/evaluate",
+    "pages/recharge/recharge",
+    "pages/mine/mine",
+    "pages/mine/notifications/notifications",
+    "pages/mine/about/about",
+    "pages/mine/agreement/agreement",
+    "pages/mine/privacy/privacy",
+    "pages/visit/record",
+    "pages/prescription/detail",
+    "pages/mine/patient/list",
+    "pages/mine/patient/edit",
+    "demo/demo",
+    "pages/mine/favorite_doctor/favorite_doctor"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "医院预约挂号",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F7FA"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#999999",
+    "selectedColor": "#00B894",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/schedule/list",
+        "text": "科室"
+      },
+      {
+        "pagePath": "pages/order/list",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-rate": "@vant/weapp/rate/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "page-nav": "/components/page-nav/page-nav",
+    "bottom-bar": "/components/bottom-bar/bottom-bar"
+  },
+  "sitemapLocation": "sitemap.json"
+}

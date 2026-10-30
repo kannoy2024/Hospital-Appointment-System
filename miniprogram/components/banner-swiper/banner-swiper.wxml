@@ -1,0 +1,38 @@
+<view class="banner-swiper">
+  <swiper class="banner-swiper__inner" autoplay circular interval="4000" bindchange="onChange">
+    <swiper-item wx:for="{{ banners }}" wx:key="id">
+      <view
+        wx:if="{{ item.type === 'image' }}"
+        class="banner-swiper__slide banner-swiper__slide--image banner-swiper__slide--tap"
+        hover-class="banner-swiper__slide--pressed"
+        hover-stay-time="100"
+        data-link="{{ item.link }}"
+        bindtap="onBannerTap"
+      >
+        <image class="banner-swiper__bg" src="{{ item.image }}" mode="scaleToFill" />
+      </view>
+      <view
+        wx:else
+        class="banner-swiper__slide banner-swiper__slide--card banner-swiper__slide--tap"
+        hover-class="banner-swiper__slide--pressed"
+        hover-stay-time="100"
+        data-link="{{ item.link }}"
+        bindtap="onBannerTap"
+      >
+        <view class="banner-swiper__text">
+          <text class="banner-swiper__title">{{ item.title }}</text>
+          <text class="banner-swiper__subtitle">{{ item.subtitle }}</text>
+          <text class="banner-swiper__tagline">{{ item.tagline }}</text>
+        </view>
+        <image wx:if="{{ item.image }}" class="banner-swiper__illus" src="{{ item.image }}" mode="aspectFit" />
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class="banner-swiper__dots">
+    <view
+      wx:for="{{ banners }}"
+      wx:key="id"
+      class="banner-swiper__dot {{ current === index ? 'banner-swiper__dot--active' : '' }}"
+    />
+  </view>
+</view>

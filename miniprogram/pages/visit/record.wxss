@@ -1,0 +1,3 @@
+.visit-record__body {
+  padding: 24rpx 32rpx;
+}

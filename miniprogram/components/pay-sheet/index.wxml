@@ -1,0 +1,66 @@
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  round
+  closeable
+  close-on-click-overlay="{{ false }}"
+  safe-area-inset-bottom
+  bind:close="onClose"
+>
+  <view class="pay-sheet">
+
+    <view class="pay-sheet__brand">
+      <view class="pay-sheet__logo pay-sheet__logo--{{ brandClass }}">{{ brandChar }}</view>
+      <text class="pay-sheet__channel">{{ channelName }}</text>
+    </view>
+
+    <view class="pay-sheet__amount-wrap">
+      <text class="pay-sheet__amount-label">支付金额</text>
+      <text class="pay-sheet__amount">¥{{ amountText }}</text>
+      <text wx:if="{{ description }}" class="pay-sheet__desc">{{ description }}</text>
+    </view>
+
+    <view class="pay-sheet__rows">
+      <view class="pay-sheet__row">
+        <text class="pay-sheet__row-label">商户单号</text>
+        <text class="pay-sheet__row-value">{{ outTradeNo }}</text>
+      </view>
+      <view wx:if="{{ expireText }}" class="pay-sheet__row">
+        <text class="pay-sheet__row-label">支付截止</text>
+        <text class="pay-sheet__row-value">{{ expireText }}</text>
+      </view>
+    </view>
+
+    <van-button
+      block
+      round
+      color="#07C160"
+      loading="{{ busy }}"
+      disabled="{{ busy }}"
+      custom-class="pay-sheet__btn"
+      bind:click="onConfirm"
+    >确认支付</van-button>
+
+    <view wx:if="{{ !busy }}" class="pay-sheet__cancel" bindtap="onClose">
+      {{ cancelText }}
+    </view>
+
+    <!-- ===== 以下整块为测试专用，接入真实微信支付后应删除 ===== -->
+    <view wx:if="{{ !busy }}" class="pay-sheet__mock">
+      <view class="pay-sheet__mock-head">
+        <text class="pay-sheet__mock-badge">仅供测试</text>
+        <text class="pay-sheet__mock-title">下列操作会直接改动后端数据，上线前务必移除</text>
+      </view>
+      <view class="pay-sheet__mock-actions">
+        <view class="pay-sheet__mock-btn pay-sheet__mock-btn--warn" bindtap="onMockTimeout">
+          <text class="pay-sheet__mock-btn-title">模拟支付超时</text>
+          <text class="pay-sheet__mock-btn-desc">{{ mockTimeoutDesc }}</text>
+        </view>
+        <view class="pay-sheet__mock-btn pay-sheet__mock-btn--danger" bindtap="onMockFail">
+          <text class="pay-sheet__mock-btn-title">模拟支付失败</text>
+          <text class="pay-sheet__mock-btn-desc">{{ mockFailDesc }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-popup>

@@ -1,0 +1,83 @@
+.time-slot-grid__tip {
+  margin-bottom: 20rpx;
+  padding: 16rpx 20rpx;
+  background: #FFF7E6;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-small);
+  color: #FA8C16;
+  line-height: 1.5;
+}
+
+.time-slot-grid__section {
+  margin-bottom: var(--spacing-md);
+}
+
+.time-slot-grid__section:last-child {
+  margin-bottom: 0;
+}
+
+.time-slot-grid__label {
+  display: block;
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  margin-bottom: 16rpx;
+}
+
+.time-slot-grid__list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16rpx;
+}
+
+.time-slot-grid__slot {
+  flex: 1;
+  min-width: 0;
+  min-height: 88rpx;
+  padding: 12rpx 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rpx;
+  box-sizing: border-box;
+  background: var(--color-surface);
+  border: 2rpx solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.time-slot-grid__time {
+  font-size: var(--font-caption);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.time-slot-grid__status {
+  font-size: 20rpx;
+  color: var(--color-text-placeholder);
+}
+
+.time-slot-grid__status--remain {
+  color: var(--color-primary);
+}
+
+.time-slot-grid__slot--active .time-slot-grid__status--remain {
+  color: var(--color-primary);
+}
+
+.time-slot-grid__slot--active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.time-slot-grid__slot--active .time-slot-grid__time {
+  color: var(--color-primary);
+}
+
+.time-slot-grid__slot--disabled {
+  background: #F5F5F5;
+  border-color: #EBEBEB;
+}
+
+.time-slot-grid__slot--disabled .time-slot-grid__time {
+  color: var(--color-text-placeholder);
+}

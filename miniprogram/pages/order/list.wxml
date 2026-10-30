@@ -1,0 +1,22 @@
+<view class="page page--tab order-list">
+  <page-nav title="我的订单" back="{{ false }}" />
+  <van-tabs active="{{ activeTab }}" color="#00B894" scrollable bind:change="onTabChange">
+    <van-tab wx:for="{{ tabs }}" wx:key="key" name="{{ item.key }}" title="{{ item.title }}" />
+  </van-tabs>
+  <scroll-view class="order-list__scroll" scroll-y>
+    <view class="order-list__content">
+      <order-card
+        wx:for="{{ orders }}"
+        wx:key="id"
+        order="{{ item }}"
+        bind:tap="onOrderTap"
+        bind:action="onOrderAction"
+      />
+      <view wx:if="{{ !loggedIn }}" class="order-list__login-hint">
+        <empty-state description="请先登录后查看订单" />
+        <van-button type="primary" round size="small" custom-class="btn-primary" bind:click="onGoLogin">去登录</van-button>
+      </view>
+      <empty-state wx:elif="{{ !orders.length }}" description="暂无订单" />
+    </view>
+  </scroll-view>
+</view>

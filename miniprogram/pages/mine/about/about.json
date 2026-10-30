@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "page-nav": "/components/page-nav/page-nav",
+    "van-icon": "@vant/weapp/icon/index"
+  },
+  "navigationStyle": "custom"
+}

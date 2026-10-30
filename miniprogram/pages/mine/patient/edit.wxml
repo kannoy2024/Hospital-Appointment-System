@@ -1,0 +1,56 @@
+<view class="page page--bottom-bar">
+  <page-nav title="{{ isEdit ? '编辑就诊人' : '新增就诊人' }}" />
+
+  <view class="patient-form">
+    <view class="card">
+      <van-field
+        label="姓名" value="{{ name }}" placeholder="请输入就诊人姓名"
+        required bind:change="onNameInput"
+      />
+      <van-field
+        label="电话" value="{{ phone }}" type="number" maxlength="11"
+        placeholder="请输入手机号" required bind:change="onPhoneInput"
+      />
+      <van-field
+        label="身份证" value="{{ idCard }}" type="idcard" maxlength="18"
+        placeholder="选填" bind:change="onIdCardInput"
+      />
+
+      <view class="form-row">
+        <text class="form-row__label">性别</text>
+        <van-radio-group value="{{ gender }}" direction="horizontal" bind:change="onGenderChange">
+          <van-radio name="{{ 1 }}">男</van-radio>
+          <van-radio name="{{ 2 }}">女</van-radio>
+        </van-radio-group>
+      </view>
+
+      <view class="form-row">
+        <text class="form-row__label">出生日期</text>
+        <picker mode="date" value="{{ birthDate }}" start="1900-01-01" end="{{ today }}" bindchange="onBirthDateChange">
+          <view class="form-row__picker {{ birthDate ? '' : 'form-row__picker--empty' }}">
+            {{ birthDate || '请选择' }}
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-row">
+        <text class="form-row__label">婚姻</text>
+        <van-radio-group value="{{ marital }}" direction="horizontal" bind:change="onMaritalChange">
+          <van-radio name="{{ 1 }}">已婚</van-radio>
+          <van-radio name="{{ 2 }}">未婚</van-radio>
+        </van-radio-group>
+      </view>
+
+      <van-field
+        label="地址" value="{{ address }}" placeholder="选填"
+        bind:change="onAddressInput"
+      />
+    </view>
+  </view>
+
+  <bottom-bar
+    text="保存"
+    loading="{{ submitting }}"
+    bind:confirm="onSubmit"
+  />
+</view>

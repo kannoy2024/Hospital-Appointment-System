@@ -1,0 +1,9 @@
+<scroll-view class="disease-tags" scroll-x enable-flex>
+  <view
+    wx:for="{{ list }}"
+    wx:key="*this"
+    class="disease-tags__item"
+    data-name="{{ item }}"
+    bindtap="onTap"
+  >{{ item }}</view>
+</scroll-view>

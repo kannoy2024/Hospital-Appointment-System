@@ -1,0 +1,24 @@
+<view class="page page--bottom-bar schedule-detail">
+  <page-nav title="医生排班详情" />
+  <scroll-view class="schedule-detail__scroll" scroll-y>
+    <view class="schedule-detail__content">
+      <doctor-header doctor="{{ doctor }}" favorited="{{ favorited }}" bind:togglefav="onToggleFav" />
+      <view class="card">
+        <text class="schedule-detail__label">选择就诊日期</text>
+        <date-strip list="{{ dateList }}" value="{{ selectedDate }}" bind:change="onDateChange" />
+      </view>
+      <view class="card">
+        <text class="schedule-detail__label">选择就诊时段</text>
+        <time-slot-grid
+          morning="{{ morning }}"
+          afternoon="{{ afternoon }}"
+          selected="{{ selectedTime }}"
+          has-any-schedule="{{ hasAnySchedule }}"
+          has-available="{{ hasAvailable }}"
+          bind:select="onSlotSelect"
+        />
+      </view>
+    </view>
+  </scroll-view>
+  <bottom-bar text="立即预约" price="{{ feeText }}" price-label="挂号费" bind:confirm="onBook" />
+</view>

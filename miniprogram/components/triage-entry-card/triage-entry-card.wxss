@@ -1,0 +1,45 @@
+.triage-entry {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 28rpx 32rpx;
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-light);
+  border: 1rpx solid rgba(0, 184, 148, 0.12);
+  box-shadow: var(--shadow-card);
+}
+
+.triage-entry__icon {
+  flex-shrink: 0;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triage-entry__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.triage-entry__title {
+  display: block;
+  font-size: var(--font-title);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8rpx;
+}
+
+.triage-entry__desc {
+  display: block;
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+}
+
+.triage-entry__arrow {
+  flex-shrink: 0;
+}

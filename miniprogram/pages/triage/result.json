@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "page-nav": "/components/page-nav/page-nav",
+    "triage-result-card": "/components/triage-result-card/triage-result-card",
+    "van-button": "@vant/weapp/button/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-icon": "@vant/weapp/icon/index"
+  },
+  "navigationStyle": "custom"
+}

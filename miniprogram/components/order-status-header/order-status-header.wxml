@@ -1,0 +1,4 @@
+<view class="order-status-header">
+  <text class="order-status-header__title">{{ statusText }}</text>
+  <text wx:if="{{ location }}" class="order-status-header__location">就诊地点：{{ location }}</text>
+</view>

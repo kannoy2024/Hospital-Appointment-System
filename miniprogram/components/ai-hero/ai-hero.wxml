@@ -1,0 +1,8 @@
+<view class="ai-hero">
+  <view class="ai-hero__icon">
+    <van-icon name="service" size="40px" color="#00B894" />
+  </view>
+  <view class="ai-hero__body">
+    <text class="ai-hero__desc">描述症状，为您推荐合适科室</text>
+  </view>
+</view>

@@ -1,0 +1,59 @@
+<view class="page triage-result">
+  <page-nav title="导诊结果" />
+  <scroll-view class="triage-result__scroll" scroll-y>
+    <view class="triage-result__content">
+      <view wx:if="{{ loading }}" class="triage-result__loading card">
+        <van-loading size="24px" color="#00B894" />
+        <text class="triage-result__loading-text">AI 分析中...</text>
+      </view>
+
+      <block wx:else>
+        <view class="triage-result__summary card">
+          <view class="triage-result__summary-head">
+            <text class="triage-result__label">分析摘要</text>
+            <text class="triage-result__source">{{ sourceLabel }}</text>
+          </view>
+
+          <view class="triage-result__block">
+            <text class="triage-result__block-title">症状分析</text>
+            <text class="triage-result__block-body">{{ symptomAnalysis }}</text>
+          </view>
+
+          <view class="triage-result__block">
+            <text class="triage-result__block-title">常见病征</text>
+            <view class="triage-result__signs">
+              <text wx:for="{{ commonSigns }}" wx:key="*this" class="triage-result__sign">{{ item }}</text>
+            </view>
+          </view>
+
+          <view class="triage-result__block">
+            <text class="triage-result__block-title">初步结论</text>
+            <text class="triage-result__block-body">{{ preliminaryConclusion }}</text>
+          </view>
+
+          <view class="triage-result__user-symptom">
+            <text class="triage-result__symptom-label">您的症状</text>
+            <text class="triage-result__symptom">{{ symptom }}</text>
+          </view>
+
+          <view wx:if="{{ urgent }}" class="triage-result__urgent">
+            <van-icon name="warning-o" size="14px" color="#FA8C16" />
+            <text>症状可能较紧急，建议尽快就医或拨打 120</text>
+          </view>
+          <text wx:if="{{ advice }}" class="triage-result__advice">{{ advice }}</text>
+        </view>
+
+        <triage-result-card
+          wx:for="{{ departments }}"
+          wx:key="id"
+          department="{{ item }}"
+          rank="{{ index + 1 }}"
+          bind:select="onDeptSelect"
+        />
+      </block>
+    </view>
+  </scroll-view>
+  <view wx:if="{{ !loading }}" class="triage-result__footer safe-bottom">
+    <van-button type="primary" block round custom-class="btn-primary" bind:click="onViewAll">查看推荐医生</van-button>
+  </view>
+</view>

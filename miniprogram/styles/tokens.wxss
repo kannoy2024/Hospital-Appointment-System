@@ -1,0 +1,33 @@
+page {
+  --color-primary: #005fb8;
+  --color-primary-dark: #008B84;
+  --color-primary-light: #E6F7F4;
+  --color-success: #22c56b;
+  --color-warning: #FFB020;
+  --color-danger: #FF4D4F;
+  --color-text: #333333;
+  --color-text-secondary: #666693;
+  --color-text-placeholder: #999999;
+  --color-bg: #F5F7FA;
+  --color-surface: #FFFFFF;
+  --color-border: #EEEEEE;
+  --radius-sm: 8rpx;
+  --radius-md: 12rpx;
+  --radius-lg: 20rpx;
+  --radius-xl: 32rpx;
+  --shadow-card: 0 4rpx 24rpx rgba(0, 139, 132, 0.08);
+  --spacing-xs: 8rpx;
+  --spacing-sm: 16rpx;
+  --spacing-md: 24rpx;
+  --spacing-lg: 32rpx;
+  --spacing-xl: 48rpx;
+  --page-padding: 32rpx;
+  --font-title-lg: 34rpx;
+  --font-title: 32rpx;
+  --font-subtitle: 28rpx;
+  --font-body: 28rpx;
+  --font-caption: 24rpx;
+  --font-small: 22rpx;
+  --tabbar-height: 100rpx;
+  --bottom-bar-height: 120rpx;
+}

@@ -1,0 +1,99 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: hospital-mysql
+    # 崩溃重启
+    restart: unless-stopped
+    environment:
+      # 从.env中读起
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: hospital_booking
+      # 创建服务账号
+      MYSQL_USER: hospital
+      # 只能使用hospital-booking
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - type: bind
+        source: ./sql/system.sql              # 完整建库脚本（已脱敏的演示数据）
+        target: /docker-entrypoint-initdb.d/01-init.sql
+        read_only: true
+      - type: volume
+        source: mysql-data
+        target: /var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  redis:
+    image: redis:7-alpine
+    container_name: hospital-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./springboot
+    image: hospital-backend:1.0.0
+    container_name: hospital-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      TZ: Asia/Shanghai
+      # 覆盖 application.yml 里的 ${local.*}（见第五节原理）
+      LOCAL_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+      LOCAL_DATASOURCE_HOST: mysql
+      LOCAL_DATASOURCE_PORT: "3306"
+      LOCAL_DATASOURCE_DATABASE: hospital_booking
+      LOCAL_DATASOURCE_USERNAME: hospital
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      LOCAL_REDIS_HOST: redis
+      LOCAL_REDIS_PORT: "6379"
+      LOCAL_REDIS_DATABASE: "0"
+      LOCAL_REDIS_TIMEOUT: 3000ms
+      LOCAL_REDIS_POOL_MAX_ACTIVE: "16"
+      LOCAL_REDIS_POOL_MAX_IDLE: "8"
+      LOCAL_REDIS_POOL_MIN_IDLE: "4"
+      LOCAL_REDIS_POOL_MAX_WAIT: 2000ms
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      WX_APP_SECRET: ${WX_APP_SECRET}
+      AI_API_KEY: ${AI_API_KEY}
+      APP_UPLOAD_PATH: /app/uploads
+      WECHAT_MINIAPP_APP_ID: wx08abffa32f3a8e19
+    volumes:
+      # 绑定已有头像文件，避免默认头像 404；新增上传也会落到宿主机
+      - ./springboot/uploads:/app/uploads
+
+
+  frontend:
+    build:
+      context: ./vue
+    image: hospital-frontend:1.0.0
+    container_name: hospital-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  mysql-data:
+  redis-data:

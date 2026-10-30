@@ -1,0 +1,134 @@
+.order-detail__scroll {
+  height: calc(100vh - 46px - 200rpx);
+}
+
+@import '../../styles/pay.wxss';
+
+.order-detail__content {
+  padding: 24rpx 32rpx;
+}
+
+.pay-card {
+  margin-top: 20rpx;
+  padding: 24rpx;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.card__title {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+  margin-bottom: 8rpx;
+}
+
+/* ===== 退款卡片 ===== */
+.refund-card {
+  margin-top: 20rpx;
+  padding: 24rpx;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.refund-card__body {
+  margin-top: 8rpx;
+}
+
+.refund-card__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24rpx;
+  padding: 10rpx 0;
+  font-size: 26rpx;
+}
+
+.refund-card__label {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.refund-card__value {
+  flex: 1;
+  text-align: right;
+  color: var(--color-text);
+  word-break: break-all;
+}
+
+.refund-card__value--mono {
+  font-family: Menlo, Consolas, monospace;
+  font-size: 22rpx;
+  color: var(--color-text-secondary);
+}
+
+.refund-card__value--PROCESSING {
+  color: #d48806;
+  font-weight: 600;
+}
+
+.refund-card__value--SUCCESS {
+  color: #237804;
+  font-weight: 600;
+}
+
+.refund-card__value--FAILED {
+  color: #cf1322;
+  font-weight: 600;
+}
+
+.refund-card__value--CLOSED {
+  color: var(--color-text-secondary);
+}
+
+.refund-card__tip {
+  margin-top: 8rpx;
+  padding: 16rpx;
+  border-radius: var(--radius-md, 12rpx);
+  background: #fff7e6;
+  border: 1rpx solid #ffe7ba;
+  color: #ad6800;
+  font-size: 22rpx;
+  line-height: 1.6;
+}
+
+/* 测试区故意做得扎眼：这是模拟网关的地方，不能让人误以为是正式功能 */
+.refund-card__test {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  border-radius: var(--radius-md, 12rpx);
+  background: #fff1f0;
+  border: 2rpx dashed #ff7875;
+}
+
+.refund-card__test-title {
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #cf1322;
+}
+
+.refund-card__test-desc {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  line-height: 1.6;
+  color: #a8071a;
+}
+
+.refund-card__test-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.order-detail__actions {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  padding: 16rpx 32rpx;
+  background: var(--color-surface);
+  box-shadow: 0 -4rpx 24rpx rgba(0, 0, 0, 0.06);
+}

@@ -1,0 +1,45 @@
+<view class="time-slot-grid">
+  <view wx:if="{{ !hasAvailable }}" class="time-slot-grid__tip">
+    <text>{{ hasAnySchedule ? '当日号源已满，请选择其他时段或日期' : '当日暂无号源，请选择其他日期' }}</text>
+  </view>
+
+  <view class="time-slot-grid__section">
+    <text class="time-slot-grid__label">上午</text>
+    <view class="time-slot-grid__list">
+      <view
+        wx:for="{{ morning }}"
+        wx:key="time"
+        class="time-slot-grid__slot {{ item.available ? '' : 'time-slot-grid__slot--disabled' }} {{ selected === item.time && item.available ? 'time-slot-grid__slot--active' : '' }}"
+        data-time="{{ item.time }}"
+        data-available="{{ item.available }}"
+        data-schedule-id="{{ item.scheduleId }}"
+        bindtap="onSelect"
+      >
+        <text class="time-slot-grid__time">{{ item.time }}</text>
+        <text wx:if="{{ item.available }}" class="time-slot-grid__status time-slot-grid__status--remain">余{{ item.remainQuota }}</text>
+        <text wx:elif="{{ item.full }}" class="time-slot-grid__status">约满</text>
+        <text wx:elif="{{ item.noSchedule }}" class="time-slot-grid__status">无号</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="time-slot-grid__section">
+    <text class="time-slot-grid__label">下午</text>
+    <view class="time-slot-grid__list">
+      <view
+        wx:for="{{ afternoon }}"
+        wx:key="time"
+        class="time-slot-grid__slot {{ item.available ? '' : 'time-slot-grid__slot--disabled' }} {{ selected === item.time && item.available ? 'time-slot-grid__slot--active' : '' }}"
+        data-time="{{ item.time }}"
+        data-available="{{ item.available }}"
+        data-schedule-id="{{ item.scheduleId }}"
+        bindtap="onSelect"
+      >
+        <text class="time-slot-grid__time">{{ item.time }}</text>
+        <text wx:if="{{ item.available }}" class="time-slot-grid__status time-slot-grid__status--remain">余{{ item.remainQuota }}</text>
+        <text wx:elif="{{ item.full }}" class="time-slot-grid__status">约满</text>
+        <text wx:elif="{{ item.noSchedule }}" class="time-slot-grid__status">无号</text>
+      </view>
+    </view>
+  </view>
+</view>

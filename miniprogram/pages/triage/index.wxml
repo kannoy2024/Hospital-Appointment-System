@@ -1,0 +1,35 @@
+<view class="page page--bottom-bar triage">
+  <page-nav title="AI 智能导诊" />
+  <scroll-view class="triage__scroll" scroll-y>
+    <view class="triage__content">
+      <ai-hero />
+      <view class="triage__steps">
+        <text class="triage__step triage__step--active">① 描述症状</text>
+        <text class="triage__step-arrow">→</text>
+        <text class="triage__step">② 智能分析</text>
+        <text class="triage__step-arrow">→</text>
+        <text class="triage__step">③ 查看推荐</text>
+      </view>
+      <view class="triage__quick">
+        <text class="triage__quick-label">常见症状</text>
+        <scroll-view class="triage__quick-scroll" scroll-x enable-flex>
+          <view class="triage__quick-row">
+            <text
+              wx:for="{{ quickTags }}"
+              wx:key="*this"
+              class="triage__quick-tag"
+              data-tag="{{ item }}"
+              bindtap="onQuickTag"
+            >{{ item }}</text>
+          </view>
+        </scroll-view>
+      </view>
+      <symptom-input value="{{ symptom }}" bind:change="onSymptomChange" />
+    </view>
+  </scroll-view>
+  <bottom-bar
+    text="{{ loading ? '分析中...' : '开始智能分析' }}"
+    loading="{{ loading }}"
+    bind:confirm="onAnalyze"
+  />
+</view>

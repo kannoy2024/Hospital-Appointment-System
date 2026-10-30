@@ -1,0 +1,10 @@
+<wxs src="./includes.wxs" module="utils" />
+<view class="rate-tags">
+  <view
+    wx:for="{{ list }}"
+    wx:key="*this"
+    class="rate-tags__item {{ utils.includes(selected, item) ? 'rate-tags__item--active' : '' }}"
+    data-tag="{{ item }}"
+    bindtap="onTap"
+  >{{ item }}</view>
+</view>

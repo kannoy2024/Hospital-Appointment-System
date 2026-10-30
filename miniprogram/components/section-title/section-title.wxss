@@ -1,0 +1,20 @@
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-title__text {
+  font-size: var(--font-subtitle);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.section-title__more {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  font-size: var(--font-small);
+  color: var(--color-text-placeholder);
+}

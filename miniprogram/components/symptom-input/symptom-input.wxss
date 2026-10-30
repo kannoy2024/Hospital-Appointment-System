@@ -1,0 +1,39 @@
+.symptom-input__label {
+  display: block;
+  font-size: var(--font-subtitle);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 16rpx;
+}
+
+.symptom-input__area {
+  width: 100%;
+  min-height: 240rpx;
+  font-size: var(--font-body);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.symptom-input__foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12rpx;
+}
+
+.symptom-input__count {
+  font-size: var(--font-small);
+  color: var(--color-text-placeholder);
+}
+
+.symptom-input__tip-bar {
+  margin-top: 16rpx;
+  padding: 12rpx 16rpx;
+  background: #F5F5F5;
+  border-radius: var(--radius-sm);
+}
+
+.symptom-input__tip {
+  font-size: 22rpx;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}

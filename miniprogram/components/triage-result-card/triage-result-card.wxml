@@ -1,0 +1,12 @@
+<view class="triage-result-card card" bindtap="onTap">
+  <view class="triage-result-card__head">
+    <view class="triage-result-card__rank">推荐 {{ rank }}</view>
+    <view class="triage-result-card__icon" style="background: {{ department.color }}20;">
+      <image class="triage-result-card__img" src="{{ department.icon }}" mode="aspectFit" />
+    </view>
+    <text class="triage-result-card__name">{{ department.name }}</text>
+    <van-rate value="{{ department.score }}" readonly size="12" color="#FFB020" />
+  </view>
+  <text class="triage-result-card__desc">{{ department.description }}</text>
+  <text wx:if="{{ department.reason }}" class="triage-result-card__reason">{{ department.reason }}</text>
+</view>

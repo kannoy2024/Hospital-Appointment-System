@@ -1,0 +1,22 @@
+.patient-form {
+  padding: var(--spacing-md);
+  padding-bottom: 160rpx;
+}
+.form-row {
+  display: flex;
+  align-items: center;
+  min-height: 96rpx;
+  padding: 0 32rpx;
+  font-size: var(--font-body);
+}
+.form-row__label {
+  width: 160rpx;
+  color: var(--color-text);
+}
+.form-row__picker {
+  flex: 1;
+  color: var(--color-text);
+}
+.form-row__picker--empty {
+  color: var(--color-text-placeholder);
+}

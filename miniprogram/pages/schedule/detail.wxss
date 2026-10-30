@@ -1,0 +1,15 @@
+.schedule-detail__scroll {
+  height: calc(100vh - 46px - var(--bottom-bar-height));
+}
+
+.schedule-detail__content {
+  padding: 24rpx 32rpx;
+}
+
+.schedule-detail__label {
+  display: block;
+  font-size: var(--font-subtitle);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 16rpx;
+}

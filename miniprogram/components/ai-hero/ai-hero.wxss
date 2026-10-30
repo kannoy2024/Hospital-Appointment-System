@@ -1,0 +1,33 @@
+.ai-hero {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 28rpx 32rpx;
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-light);
+  border: 1rpx solid rgba(0, 184, 148, 0.12);
+  box-shadow: var(--shadow-card);
+}
+
+.ai-hero__icon {
+  flex-shrink: 0;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-hero__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.ai-hero__desc {
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}

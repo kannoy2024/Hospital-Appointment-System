@@ -1,0 +1,31 @@
+<view class="doctor-header">
+  <view wx:if="{{ favorited !== null }}" class="doctor-header__fav" catchtap="onFavTap">
+    <van-icon name="{{ favorited ? 'like' : 'like-o' }}" size="24px" color="{{ favorited ? '#FF4D4F' : '#999' }}" />
+  </view>
+  <view class="doctor-header__avatar">
+    <van-image
+      wx:if="{{ doctor.avatarUrl }}"
+      class="doctor-header__avatar-img"
+      src="{{ doctor.avatarUrl }}"
+      width="120rpx"
+      height="120rpx"
+      round
+      fit="cover"
+    />
+    <van-icon wx:else name="manager" size="40px" color="#00B894" />
+  </view>
+  <view class="doctor-header__info">
+    <view class="doctor-header__name-row">
+      <text class="doctor-header__name">{{ doctor.name }}</text>
+      <text class="doctor-header__title">{{ doctor.title }}</text>
+    </view>
+    <text class="doctor-header__hospital">{{ doctor.hospital }} · {{ deptName }}</text>
+    <view class="doctor-header__meta">
+      <van-icon name="star" size="14px" color="#FFB020" />
+      <text>{{ doctor.rating }}{{ doctor.rating === '暂无' ? '' : '分' }}</text>
+      <text class="doctor-header__split">|</text>
+      <text>问诊 {{ doctor.consultCount }}</text>
+    </view>
+    <text class="doctor-header__intro">{{ doctor.intro }}</text>
+  </view>
+</view>

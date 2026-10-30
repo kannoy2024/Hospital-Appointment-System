@@ -1,0 +1,10 @@
+<van-nav-bar
+  title="{{ title }}"
+  left-arrow="{{ back }}"
+  fixed
+  placeholder
+  border="{{ false }}"
+  title-class="page-nav__title"
+  custom-style="--nav-bar-background-color: #FFFFFF; --nav-bar-title-text-color: #333333; --nav-bar-icon-color: #333333; --nav-bar-height: 46px;"
+  bind:click-left="onBack"
+/>

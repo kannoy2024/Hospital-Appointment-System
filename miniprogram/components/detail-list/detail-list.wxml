@@ -1,0 +1,6 @@
+<view class="detail-list card">
+  <view wx:for="{{ items }}" wx:key="label" class="detail-list__row">
+    <text class="detail-list__label">{{ item.label }}</text>
+    <text class="detail-list__value">{{ item.value }}</text>
+  </view>
+</view>

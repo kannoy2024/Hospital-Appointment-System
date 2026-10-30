@@ -1,0 +1,15 @@
+.disease-tags {
+  white-space: nowrap;
+  padding: 8rpx 0;
+}
+
+.disease-tags__item {
+  display: inline-block;
+  margin-right: 16rpx;
+  padding: 12rpx 28rpx;
+  background: var(--color-surface);
+  border-radius: 32rpx;
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-card);
+}

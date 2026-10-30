@@ -1,0 +1,14 @@
+<view class="dept-grid">
+  <view
+    wx:for="{{ list }}"
+    wx:key="id"
+    class="dept-grid__item"
+    data-id="{{ item.id }}"
+    bindtap="onTap"
+  >
+    <view class="dept-grid__icon" style="background: {{ item.color }}20;">
+      <image class="dept-grid__img" src="{{ item.icon }}" mode="aspectFit" />
+    </view>
+    <text class="dept-grid__name">{{ item.name }}</text>
+  </view>
+</view>

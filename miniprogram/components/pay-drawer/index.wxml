@@ -1,0 +1,35 @@
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  round
+  closeable
+  safe-area-inset-bottom
+  bind:close="onClose"
+>
+  <view class="pay-drawer">
+    <view class="pay-drawer__channel">
+      <view wx:if="{{ method === 'balance' }}" class="pay-drawer__logo pay-drawer__logo--balance">余</view>
+      <view wx:elif="{{ method === 'wechat' }}" class="pay-drawer__logo pay-drawer__logo--wechat">微</view>
+      <view wx:else class="pay-drawer__logo pay-drawer__logo--alipay">支</view>
+      <text class="pay-drawer__name">{{ channelName }}</text>
+    </view>
+
+    <view class="pay-drawer__amount-wrap">
+      <text class="pay-drawer__amount-label">实付金额</text>
+      <text class="pay-drawer__amount">¥{{ amount }}</text>
+      <text wx:if="{{ method === 'balance' && balance }}" class="pay-drawer__balance">可用余额 ¥{{ balance }}</text>
+    </view>
+
+    <van-button
+      block
+      round
+      color="#00B894"
+      loading="{{ loading }}"
+      disabled="{{ loading }}"
+      custom-class="pay-drawer__btn"
+      bind:click="onConfirm"
+    >
+      确认支付
+    </van-button>
+  </view>
+</van-popup>

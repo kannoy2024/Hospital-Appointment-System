@@ -1,0 +1,47 @@
+<view class="order-card" bindtap="onTap">
+  <view class="order-card__head">
+    <text class="order-card__dept">{{ order.departmentName }}</text>
+    <status-tag text="{{ statusText }}" type="{{ statusType }}" />
+  </view>
+  <view class="order-card__doctor">
+    <text class="order-card__name">{{ order.doctorName }}</text>
+    <text class="order-card__title">{{ order.doctorTitle }}</text>
+  </view>
+  <text class="order-card__time">{{ timeText }}</text>
+  <text class="order-card__no">订单号：{{ order.orderNo }}</text>
+  <view class="order-card__foot">
+    <text class="order-card__fee">{{ feeText }}</text>
+    <view class="order-card__actions">
+      <view
+        wx:if="{{ order.canPay }}"
+        class="order-card__btn order-card__btn--primary"
+        data-action="pay"
+        catchtap="onAction"
+      >去支付</view>
+      <view
+        wx:if="{{ order.status === 'unpaid' }}"
+        class="order-card__btn order-card__btn--ghost"
+        data-action="cancel"
+        catchtap="onAction"
+      >取消订单</view>
+      <view
+        wx:if="{{ order.canCancel && order.status !== 'unpaid' }}"
+        class="order-card__btn order-card__btn--ghost"
+        data-action="cancel"
+        catchtap="onAction"
+      >取消预约</view>
+      <view
+        wx:if="{{ order.canPayPrescription }}"
+        class="order-card__btn order-card__btn--primary"
+        data-action="rx"
+        catchtap="onAction"
+      >缴药费</view>
+      <view
+        wx:if="{{ order.status === 'completed' && !order.evaluated }}"
+        class="order-card__btn order-card__btn--primary"
+        data-action="evaluate"
+        catchtap="onAction"
+      >评价</view>
+    </view>
+  </view>
+</view>

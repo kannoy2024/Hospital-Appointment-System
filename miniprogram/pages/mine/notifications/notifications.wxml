@@ -1,0 +1,25 @@
+<view class="page notifications">
+  <page-nav title="消息通知" />
+  <view class="notifications__toolbar" wx:if="{{ list.length }}">
+    <text class="notifications__read-all" bindtap="onReadAll">全部已读</text>
+  </view>
+  <scroll-view class="notifications__scroll" scroll-y>
+    <view wx:if="{{ loading }}" class="notifications__loading">加载中...</view>
+    <van-empty wx:elif="{{ !list.length }}" description="暂无消息" />
+    <view
+      wx:for="{{ list }}"
+      wx:key="id"
+      class="notifications__item {{ item.read ? '' : 'notifications__item--unread' }}"
+      data-item="{{ item }}"
+      bindtap="onItemTap"
+    >
+      <view class="notifications__head">
+        <text class="notifications__title">{{ item.title }}</text>
+        <van-tag wx:if="{{ !item.read }}" type="danger" size="medium">未读</van-tag>
+      </view>
+      <text class="notifications__type">{{ item.typeText }}</text>
+      <text class="notifications__content">{{ item.content }}</text>
+      <text class="notifications__time">{{ item.timeText }}</text>
+    </view>
+  </scroll-view>
+</view>

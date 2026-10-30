@@ -1,0 +1,174 @@
+<view class="page order-detail" wx:if="{{ order }}">
+  <page-nav title="订单详情" />
+  <scroll-view class="order-detail__scroll" scroll-y>
+    <view class="order-detail__content">
+      <order-status-header status="{{ order.displayStatus || order.rawStatus || order.status }}" location="{{ order.location }}" />
+      <visit-progress wx:if="{{ order.displayStatus || order.rawStatus }}" status="{{ order.displayStatus || order.rawStatus }}" />
+      <detail-list items="{{ detailItems }}" />
+
+      <view wx:if="{{ order.canPay }}" class="card pay-card">
+        <view class="card__title">选择支付方式</view>
+        <view
+          class="pay-item {{ payMethod === item.id ? 'pay-item--active' : '' }} {{ item.disabled ? 'pay-item--disabled' : '' }}"
+          wx:for="{{ payMethods }}"
+          wx:key="id"
+          data-id="{{ item.id }}"
+          bindtap="onPayMethodTap"
+        >
+          <view class="pay-item__left">
+            <view class="pay-item__icon pay-item__icon--{{ item.id }}">{{ item.id === 'wechat' ? '微' : (item.id === 'alipay' ? '支' : '余') }}</view>
+            <view>
+              <text class="pay-item__name">{{ item.name }}</text>
+              <text wx:if="{{ item.desc }}" class="pay-item__desc">{{ item.desc }}</text>
+            </view>
+          </view>
+          <view class="pay-item__radio {{ payMethod === item.id ? 'pay-item__radio--on' : '' }}"></view>
+        </view>
+      </view>
+
+      <!-- 退款：取消「已支付」预约时由后端自动发起（微信/支付宝异步，余额同步退回），
+           前端不发起退款，只展示进度 + 在 Mock 通道里模拟网关回传退款结果 -->
+      <view wx:if="{{ refundVisible }}" class="card refund-card">
+        <view class="card__title">退款</view>
+
+        <view wx:if="{{ refund }}" class="refund-card__body">
+          <view class="refund-card__row">
+            <text class="refund-card__label">退款状态</text>
+            <text class="refund-card__value refund-card__value--{{ refund.status }}">{{ refund.statusText }}</text>
+          </view>
+          <view class="refund-card__row">
+            <text class="refund-card__label">退款金额</text>
+            <text class="refund-card__value">{{ refund.amountText }}</text>
+          </view>
+          <view class="refund-card__row">
+            <text class="refund-card__label">退款单号</text>
+            <text class="refund-card__value refund-card__value--mono">{{ refund.outRefundNo }}</text>
+          </view>
+          <view wx:if="{{ refund.reason }}" class="refund-card__row">
+            <text class="refund-card__label">退款原因</text>
+            <text class="refund-card__value">{{ refund.reason }}</text>
+          </view>
+        </view>
+
+        <view wx:if="{{ refundTip }}" class="refund-card__tip">{{ refundTip }}</view>
+
+        <!-- ⚠️ 仅 wechat.pay.channel=mock 时有意义：模拟微信网关异步推送的退款结果通知。
+             真实微信里这一步由网关调后端 /api/pay/refund-notify 完成，前端没有任何按钮。 -->
+        <view wx:if="{{ refund && refund.status === 'PROCESSING' }}" class="refund-card__test">
+          <view class="refund-card__test-title">⚠️ 测试专用 · 模拟网关退款回调</view>
+          <view class="refund-card__test-desc">真实微信的退款结果是网关异步推给后端的，前端没有这个按钮。点下面的按钮等于扮演微信网关。</view>
+          <view class="refund-card__test-actions">
+            <van-button
+              size="small"
+              round
+              type="primary"
+              custom-class="btn-primary"
+              loading="{{ refundBusy }}"
+              bind:click="onMockRefundSuccess"
+            >模拟退款成功</van-button>
+            <van-button
+              size="small"
+              round
+              plain
+              loading="{{ refundBusy }}"
+              bind:click="onMockRefundFail"
+            >模拟退款失败</van-button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="order-detail__actions safe-bottom">
+    <van-button
+      wx:if="{{ order.canPay }}"
+      block
+      round
+      type="primary"
+      custom-class="btn-primary"
+      loading="{{ paying && !payDrawerVisible }}"
+      bind:click="onPay"
+    >立即支付 {{ feeText }}</van-button>
+    <van-button
+      wx:if="{{ order.canCancel && order.rawStatus === 'unpaid' }}"
+      block
+      round
+      plain
+      bind:click="onCancel"
+    >取消订单</van-button>
+    <van-button
+      wx:if="{{ order.canCancel && order.rawStatus !== 'unpaid' }}"
+      block
+      round
+      plain
+      bind:click="onCancel"
+    >取消预约</van-button>
+    <van-button
+      wx:if="{{ order.canCheckIn }}"
+      block
+      round
+      type="primary"
+      custom-class="btn-primary"
+      bind:click="onCheckIn"
+    >到院签到</van-button>
+    <van-button
+      wx:if="{{ order.canPayPrescription }}"
+      block
+      round
+      type="primary"
+      custom-class="btn-primary"
+      bind:click="onPrescription"
+    >支付药费 {{ rxFeeText }}</van-button>
+    <van-button
+      wx:if="{{ order.canViewRecord }}"
+      block
+      round
+      plain
+      color="#00B894"
+      bind:click="onViewRecord"
+    >查看病历</van-button>
+    <van-button
+      wx:if="{{ order.canViewPrescription }}"
+      block
+      round
+      plain
+      bind:click="onViewPrescription"
+    >查看处方</van-button>
+    <van-button
+      wx:if="{{ order.status === 'completed' && !order.evaluated }}"
+      block
+      round
+      plain
+      color="#00B894"
+      bind:click="onEvaluate"
+    >评价医生</van-button>
+  </view>
+</view>
+
+<pay-drawer
+  wx:if="{{ payDrawerVisible }}"
+  show="{{ payDrawerVisible }}"
+  method="{{ payDrawerMethod }}"
+  amount="{{ feeAmountText }}"
+  balance="{{ balanceText }}"
+  loading="{{ paying }}"
+  bind:close="onPayDrawerClose"
+  bind:confirm="onPayDrawerConfirm"
+/>
+
+<!-- 模拟收银台：点「确认支付」后由后端 Mock 网关投递回调，前端轮询支付单状态 -->
+<pay-sheet
+  show="{{ paySheetVisible }}"
+  pay-method="{{ paySheetMethod }}"
+  out-trade-no="{{ paySheetOutTradeNo }}"
+  description="{{ paySheetDescription }}"
+  amount-text="{{ paySheetAmountText }}"
+  expire-text="{{ paySheetExpireText }}"
+  busy="{{ paySheetBusy }}"
+  cancel-text="取消（只关闭本次支付，预约仍然有效）"
+  mock-timeout-desc="关闭支付单并取消预约、释放号源"
+  mock-fail-desc="不请求后端，预约保持待支付，可重新发起"
+  bind:confirm="onPaySheetConfirm"
+  bind:cancel="onPaySheetCancel"
+  bind:mocktimeout="onPaySheetMockTimeout"
+  bind:mockfail="onPaySheetMockFail"
+/>

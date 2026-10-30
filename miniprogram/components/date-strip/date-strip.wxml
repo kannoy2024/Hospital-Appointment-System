@@ -1,0 +1,12 @@
+<scroll-view class="date-strip" scroll-x enable-flex>
+  <view
+    wx:for="{{ list }}"
+    wx:key="value"
+    class="date-strip__item {{ value === item.value ? 'date-strip__item--active' : '' }}"
+    data-value="{{ item.value }}"
+    bindtap="onSelect"
+  >
+    <text class="date-strip__week">{{ item.week }}</text>
+    <text class="date-strip__day">{{ item.day }}</text>
+  </view>
+</scroll-view>

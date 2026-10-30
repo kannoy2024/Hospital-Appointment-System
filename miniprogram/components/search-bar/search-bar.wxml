@@ -1,0 +1,12 @@
+<view class="search-bar">
+  <van-icon name="search" size="16px" color="#999" bindtap="onSearchTap" />
+  <input
+    class="search-bar__input"
+    placeholder="{{ placeholder }}"
+    placeholder-class="search-bar__placeholder"
+    value="{{ inputValue }}"
+    confirm-type="search"
+    bindinput="onInput"
+    bindconfirm="onConfirm"
+  />
+</view>

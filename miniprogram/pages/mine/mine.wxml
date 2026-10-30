@@ -1,0 +1,128 @@
+<view class="page page--tab mine">
+  <page-nav title="我的" back="{{ false }}" />
+
+<!-- 顶部信息栏 -->
+  <view wx:if="{{ loggedIn }}" class="mine__profile card">
+    <button class="mine__avatar-btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <view class="mine__avatar mine__avatar--lg">
+        <!-- 头像 -->
+        <image wx:if="{{ displayAvatar }}" class="mine__avatar-img" src="{{ displayAvatar }}" mode="aspectFill" />
+        <van-icon wx:else name="user-o" size="40px" color="#00B894" />
+      </view>
+    </button>
+    <!-- 设置账号信息位置 -->
+    <view class="mine__info" bindtap="onProfileCardTap">
+      <view class="mine__name">{{ user.nickname || '未设置昵称' }}</view>
+      <view class="mine__meta-row">
+        <text class="mine__meta">{{ user.phone || '未绑定手机号' }}</text>
+        <text wx:if="{{ balanceText }}" class="mine__meta">余额 ¥{{ balanceText }}</text>
+      </view>
+      <text class="mine__edit-hint">点击编辑账号信息 ›</text>
+    </view>
+    <text class="mine__logout" bindtap="onLogout">退出</text>
+  </view>
+
+  <view wx:else class="mine__hero card">
+    <view class="mine__hero-top">
+      <button class="mine__avatar-btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <view class="mine__avatar mine__avatar--hero">
+          <image wx:if="{{ displayAvatar }}" class="mine__avatar-img" src="{{ displayAvatar }}" mode="aspectFill" />
+          <van-icon wx:else name="user-o" size="48px" color="#00B894" />
+        </view>
+      </button>
+      <view class="mine__hero-text">
+        <input
+          class="mine__nickname-input"
+          type="nickname"
+          value="{{ wxNickname }}"
+          placeholder="登录以继续使用"
+        />
+        <text class="mine__hero-desc">预约挂号 · 智能导诊 · 订单管理</text>
+      </view>
+    </view>
+    <van-button
+      type="primary"
+      block
+      round
+      icon="wechat"
+      custom-class="btn-primary mine__wx-btn"
+      loading="{{ wxLoginLoading }}"
+      bind:click="onWxLogin"
+    >微信一键登录</van-button>
+  </view>
+
+  <view class="card mine__menu">
+    <view
+      wx:for="{{ menuItems }}"
+      wx:key="title"
+      class="mine__menu-item"
+      data-item="{{ item }}"
+      bindtap="onMenuTap"
+    >
+      <view class="mine__menu-icon">
+        <van-icon name="{{ item.icon }}" size="20px" color="#00B894" />
+      </view>
+      <text class="mine__menu-title">{{ item.title }}</text>
+      <view wx:if="{{ item.badge && unreadCount > 0 }}" class="mine__badge">{{ unreadCount > 99 ? '99+' : unreadCount }}</view>
+      <van-icon name="arrow" size="14px" color="#ccc" />
+    </view>
+  </view>
+
+  <!-- 完善账号信息的弹窗 -->
+  <van-popup
+    show="{{ profileDialogVisible }}"
+    position="center"
+    round
+    close-on-click-overlay="{{ true }}"
+    bind:close="onProfileDialogClose"
+    custom-style="width: 86%;"
+  >
+    <view class="profile-dialog">
+      <view class="profile-dialog__header">
+        <text class="profile-dialog__title">完善账号信息</text>
+        <view
+          class="profile-dialog__close"
+          bindtap="onProfileDialogClose"
+        >
+          <van-icon name="cross" size="18px" color="#999" />
+        </view>
+      </view>
+      <view class="profile-dialog__body">
+        <van-field
+          label="昵称"
+          value="{{ dialogName }}"
+          placeholder="请输入账号昵称"
+          border="{{ true }}"
+          bind:change="onDialogNameInput"
+        />
+        <van-field
+          label="电话"
+          type="number"
+          maxlength="11"
+          value="{{ dialogPhone }}"
+          placeholder="请输入手机号"
+          border="{{ true }}"
+          bind:change="onDialogPhoneInput"
+        />
+        <van-field
+          label="邮箱"
+          type="text"
+          value="{{ dialogEmail }}"
+          placeholder="选填"
+          border="{{ true }}"
+          bind:change="onDialogEmailInput"
+        />
+      </view>
+      <view class="profile-dialog__footer">
+        <van-button
+          block
+          round
+          type="primary"
+          custom-class="btn-primary"
+          loading="{{ submittingProfile }}"
+          bind:click="onProfileDialogConfirm"
+        >保存</van-button>
+      </view>
+    </view>
+  </van-popup>
+</view>

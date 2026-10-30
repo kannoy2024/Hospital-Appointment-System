@@ -1,0 +1,21 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  height: 72rpx;
+  padding: 0 28rpx;
+  background: var(--color-surface);
+  border-radius: 36rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.search-bar__input {
+  flex: 1;
+  height: 72rpx;
+  font-size: var(--font-caption);
+  color: var(--color-text);
+}
+
+.search-bar__placeholder {
+  color: var(--color-text-placeholder);
+}

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "page-nav": "/components/page-nav/page-nav",
+    "search-bar": "/components/search-bar/search-bar",
+    "dept-sidebar": "/components/dept-sidebar/dept-sidebar",
+    "doctor-card": "/components/doctor-card/doctor-card",
+    "empty-state": "/components/empty-state/empty-state",
+    "loading-skeleton": "/components/loading-skeleton/loading-skeleton"
+  },
+  "navigationStyle": "custom"
+}

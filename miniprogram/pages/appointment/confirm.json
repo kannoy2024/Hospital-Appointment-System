@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "page-nav": "/components/page-nav/page-nav",
+    "doctor-header": "/components/doctor-header/doctor-header",
+    "info-row": "/components/info-row/info-row",
+    "bottom-bar": "/components/bottom-bar/bottom-bar",
+    "pay-drawer": "/components/pay-drawer/index",
+    "van-field": "@vant/weapp/field/index"
+  },
+  "navigationStyle": "custom"
+}

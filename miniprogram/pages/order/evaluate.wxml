@@ -1,0 +1,30 @@
+<view class="page evaluate" wx:if="{{ order }}">
+  <page-nav title="评价医生" />
+  <view class="evaluate__content">
+    <view class="card evaluate__doctor">
+      <text class="evaluate__name">{{ order.doctorName }}</text>
+      <text class="evaluate__dept">{{ order.departmentName }} · {{ order.doctorTitle }}</text>
+    </view>
+    <view class="card">
+      <text class="evaluate__label">整体评分</text>
+      <star-rating value="{{ rating }}" bind:change="onRatingChange" />
+    </view>
+    <view class="card">
+      <text class="evaluate__label">快捷评价</text>
+      <rate-tags selected="{{ selectedTags }}" bind:change="onTagsChange" />
+    </view>
+    <view class="card">
+      <text class="evaluate__label">详细评价</text>
+      <van-field
+        value="{{ comment }}"
+        type="textarea"
+        placeholder="分享您的就诊体验..."
+        autosize
+        maxlength="200"
+        border="{{ false }}"
+        bind:change="onCommentInput"
+      />
+    </view>
+    <van-button type="primary" block round custom-class="btn-primary" bind:click="onSubmit">提交评价</van-button>
+  </view>
+</view>

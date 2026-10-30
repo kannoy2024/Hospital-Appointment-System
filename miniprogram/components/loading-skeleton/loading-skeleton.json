@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "options": {
+    "multipleSlots": true
+  },
+  "usingComponents": {
+    "van-skeleton": "@vant/weapp/skeleton/index"
+  }
+}

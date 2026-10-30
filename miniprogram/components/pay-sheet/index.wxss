@@ -1,0 +1,172 @@
+.pay-sheet {
+  padding: 40rpx 40rpx calc(32rpx + env(safe-area-inset-bottom));
+}
+
+/* ===== 渠道品牌 ===== */
+.pay-sheet__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.pay-sheet__logo {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pay-sheet__logo--wechat {
+  background: linear-gradient(135deg, #4ade80, #16a34a);
+}
+
+.pay-sheet__logo--alipay {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+}
+
+.pay-sheet__channel {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ===== 金额 ===== */
+.pay-sheet__amount-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 40rpx;
+}
+
+.pay-sheet__amount-label {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+}
+
+.pay-sheet__amount {
+  font-size: 60rpx;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1f2329;
+}
+
+.pay-sheet__desc {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+}
+
+/* ===== 单号 / 截止时间 ===== */
+.pay-sheet__rows {
+  padding: 8rpx 0;
+  margin-bottom: 32rpx;
+  border-top: 1rpx solid #eef0f3;
+  border-bottom: 1rpx solid #eef0f3;
+}
+
+.pay-sheet__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+  padding: 16rpx 0;
+}
+
+.pay-sheet__row-label {
+  flex-shrink: 0;
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+}
+
+.pay-sheet__row-value {
+  font-size: 24rpx;
+  color: var(--color-text);
+  word-break: break-all;
+  text-align: right;
+}
+
+.pay-sheet__btn {
+  height: 88rpx !important;
+  font-size: 30rpx !important;
+}
+
+.pay-sheet__cancel {
+  margin-top: 24rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+}
+
+/* ===== 测试专用操作区（醒目橙色虚线，与真实支付区分） ===== */
+.pay-sheet__mock {
+  margin-top: 40rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  border: 2rpx dashed #ffa940;
+  background: #fffbe6;
+}
+
+.pay-sheet__mock-head {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.pay-sheet__mock-badge {
+  flex-shrink: 0;
+  padding: 2rpx 12rpx;
+  border-radius: 6rpx;
+  background: #d4380d;
+  color: #fff;
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+.pay-sheet__mock-title {
+  flex: 1;
+  font-size: 22rpx;
+  color: #d46b08;
+}
+
+.pay-sheet__mock-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.pay-sheet__mock-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  background: #fff;
+}
+
+.pay-sheet__mock-btn--warn {
+  border: 2rpx solid #ffa940;
+}
+
+.pay-sheet__mock-btn--danger {
+  border: 2rpx solid #ff7875;
+}
+
+.pay-sheet__mock-btn-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #1f2329;
+}
+
+.pay-sheet__mock-btn-desc {
+  font-size: 20rpx;
+  line-height: 1.5;
+  color: #8a8f99;
+}

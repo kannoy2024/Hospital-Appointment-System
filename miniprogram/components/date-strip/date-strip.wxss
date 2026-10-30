@@ -1,0 +1,39 @@
+.date-strip {
+  white-space: nowrap;
+  padding: 16rpx 0;
+}
+
+.date-strip__item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100rpx;
+  height: 120rpx;
+  margin-right: 16rpx;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 2rpx solid var(--color-border);
+}
+
+.date-strip__item--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.date-strip__item--active .date-strip__week,
+.date-strip__item--active .date-strip__day {
+  color: #fff;
+}
+
+.date-strip__week {
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+  margin-bottom: 8rpx;
+}
+
+.date-strip__day {
+  font-size: var(--font-subtitle);
+  font-weight: 600;
+  color: var(--color-text);
+}

@@ -1,0 +1,119 @@
+# ====== 服务器配置 ======
+server:
+  port: 9090                        # 后端运行端口
+
+spring:
+  application:
+    name: system-server             # 应用名称
+  config:
+    import: optional:classpath:application-local.yml  # 导入本地配置（可选，不存在不报错）
+
+  # ====== 文件上传 ======
+  servlet:
+    multipart:
+      max-file-size: 20MB           # 单文件最大 20MB
+      max-request-size: 20MB        # 单次请求总大小 20MB
+
+  # ====== Redis 连接配置 ======
+  data:
+    redis:
+      host: ${local.redis.host}                     # Redis 地址
+      port:  ${local.redis.port}                    # Redis 端口
+      password: ${REDIS_PASSWORD:}                  # Redis 密码
+      database: ${local.redis.database}             # 使用的数据库编号
+      timeout: ${local.redis.timeout}               # 连接超时时间
+      lettuce:
+        pool:
+          max-active: ${local.redis.pool.max-active}            # 连接池最大连接数
+          max-idle: ${local.redis.pool.max-idle}               # 最大空闲连接
+          min-idle: ${local.redis.pool.min-idle}               # 最小空闲连接
+          max-wait: ${local.redis.pool.max-wait}          # 获取连接最大等待时间
+
+  # ====== MySQL 数据库 ======
+  datasource:
+    driver-class-name: ${local.datasource.driver-class-name}
+    url: jdbc:mysql://${local.datasource.host}:${local.datasource.port}/${local.datasource.database}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
+    username: ${local.datasource.username}
+    password: ${DB_PASSWORD:}
+
+
+# ====== MyBatis-Plus ORM 配置 ======
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true   # 下划线自动转驼峰（如 user_name → userName）
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # SQL 日志输出
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl  #日志记录输出
+  global-config:
+    db-config:
+      id-type: auto                      # 主键自增
+      logic-delete-field: deleted        # 逻辑删除字段名
+      logic-delete-value: 1              # 已删除标记值
+      logic-not-delete-value: 0          # 未删除标记值
+
+# ====== JWT 令牌 ======
+jwt:
+  secret: ${JWT_SECRET:system-jwt-secret-key-for-graduation-project-min-32-chars}                 # 签名密钥（至少32位）（从环境变量读取）
+  expiration: 86400000                   # 令牌有效期（毫秒），24小时
+
+# ====== 业务配置 ======
+app:
+  upload:
+    path: springboot/uploads/             # 文件上传目录（头像等）
+  appointment:
+    unpaid-expire-minutes: 30            # 未支付订单超时时间（分钟），测试过程填写2分钟，实际应该为30分钟
+    expire-check-ms: 5000                # 超时扫描间隔（毫秒），5秒
+    default-fee-fen: 2000                # 挂号费默认 2000 分 = 20.00 元（单位：分，服务端统一定价）
+  prescription:
+    pay-expire-minutes: 1440             # 处方药费支付单有效期（分钟），默认24小时：药费不该30分钟就作废
+  user:
+    default-password: 123               #微信登录用户的默认密码
+  recharge:
+    max-fen: 1000000                     # 单次充值上限 1000000 分 = 10000.00 元（单位：分）
+    expire-minutes: 30                   # 充值支付单有效期（分钟）
+  export:
+    max-rows: 5000
+    schedule-max-rows: 20000
+    schedule-max-days: 31
+  schedule:
+    cache-warmup: true                 # 是否启用 Redis 排班号源预热
+  bootstrap:
+    schedule: true                       # 是否在启动时自动补充医生未来 7 天排班
+    redis-quota: true                     # 是否在启动时预热号源到 Redis
+
+# ====== AI 导诊（DeepSeek） ======
+ai:
+  enabled: false                        # 是否启用 AI 导诊
+  api-url: https://api.deepseek.com    # API 地址
+  api-key: ${AI_API_KEY:}              # API 密钥（从环境变量读取）
+  model: deepseek-v4-flash             # 使用的模型
+
+# ====== 微信小程序 ======
+wechat:
+  miniapp:
+    api-url: "https://api.weixin.qq.com"     #微信登录接口根地址
+    app-id:                # 小程序 AppID
+    app-secret: ${WX_APP_SECRET:}   # 小程序密钥（从环境变量读取）
+  pay:
+    channel: mock                          # 支付通道：mock | wechat（S5 才切 wechat）
+    api-v3-key: ${WX_PAY_API_V3_KEY:}      # 微信支付 APIv3 密钥（32位，S5 用，从环境变量读取）
+    mch-id: ${WX_PAY_MCH_ID:}              # 商户号（S5 用）
+    mch-serial-no: ${WX_PAY_MCH_SERIAL_NO:}   # 商户证书序列号（40位hex，S5 用）
+    private-key-path: ${WX_PAY_PRIVATE_KEY:}  # 商户 API 私钥 apiclient_key.pem 路径（S5 用）
+    notify-url: ${WX_PAY_NOTIFY_URL:}      # 支付回调地址，必须是公网 HTTPS（S5 用）
+    refund-notify-url: ${WX_PAY_REFUND_NOTIFY_URL:}  # 退款回调地址（S5 用）
+    reconcile-interval-ms: 60000           # 对账任务扫描间隔（毫秒）
+    reconcile-refunding-minutes: 5         # 退款单卡在 REFUNDING 超过多少分钟就开始重试
+    mock:
+      base-url: http://127.0.0.1:9090      # 本地 Mock 收银台地址（S1 用）
+      prepay-expire-minutes: 30            # Mock 支付单有效期（分钟），与预约超时同源
+
+# ====== Swagger / OpenAPI 文档 ======
+springdoc:
+  api-docs:
+    path: /v3/api-docs                 # API 文档 JSON 路径
+    enabled: false                     # 是否启用接口文档
+  swagger-ui:
+    path: /swagger-ui.html             # Swagger UI 页面路径
+    tags-sorter: alpha                 # 接口标签按字母排序
+    operations-sorter: alpha           # 接口方法按字母排序
+    enabled: false                     # 是否启用UI界面

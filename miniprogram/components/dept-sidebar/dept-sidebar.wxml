@@ -1,0 +1,9 @@
+<scroll-view class="dept-sidebar" scroll-y>
+  <view
+    wx:for="{{ list }}"
+    wx:key="id"
+    class="dept-sidebar__item {{ activeId === item.id ? 'dept-sidebar__item--active' : '' }}"
+    data-id="{{ item.id }}"
+    bindtap="onSelect"
+  >{{ item.name }}</view>
+</scroll-view>

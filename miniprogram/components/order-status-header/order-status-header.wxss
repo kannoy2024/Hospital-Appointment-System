@@ -1,0 +1,19 @@
+.order-status-header {
+  padding: 40rpx 32rpx;
+  background: linear-gradient(135deg, #00B894 0%, #008B84 100%);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.order-status-header__title {
+  display: block;
+  font-size: var(--font-title-lg);
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 12rpx;
+}
+
+.order-status-header__location {
+  font-size: var(--font-caption);
+  color: rgba(255, 255, 255, 0.9);
+}

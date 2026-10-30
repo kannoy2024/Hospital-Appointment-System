@@ -1,0 +1,85 @@
+.order-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 28rpx 32rpx;
+  margin-bottom: var(--spacing-sm);
+  box-shadow: var(--shadow-card);
+}
+
+.order-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.order-card__dept {
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+}
+
+.order-card__doctor {
+  margin-bottom: 12rpx;
+}
+
+.order-card__name {
+  font-size: var(--font-subtitle);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-right: 12rpx;
+}
+
+.order-card__title {
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+}
+
+.order-card__time {
+  display: block;
+  font-size: var(--font-caption);
+  color: var(--color-primary);
+  margin-bottom: 8rpx;
+}
+
+.order-card__no {
+  display: block;
+  font-size: var(--font-small);
+  color: var(--color-text-placeholder);
+  margin-bottom: 20rpx;
+}
+
+.order-card__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 1rpx solid var(--color-border);
+}
+
+.order-card__fee {
+  font-size: var(--font-subtitle);
+  font-weight: 600;
+  color: var(--color-danger);
+}
+
+.order-card__actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.order-card__btn {
+  padding: 12rpx 28rpx;
+  border-radius: 32rpx;
+  font-size: var(--font-small);
+}
+
+.order-card__btn--ghost {
+  color: var(--color-text-secondary);
+  border: 1rpx solid var(--color-border);
+}
+
+.order-card__btn--primary {
+  color: var(--color-primary);
+  border: 1rpx solid var(--color-primary);
+  background: var(--color-primary-light);
+}

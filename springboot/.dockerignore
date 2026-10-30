@@ -1,0 +1,6 @@
+target/
+uploads/
+src/main/resources/application-local.yml
+.idea/
+.vscode/
+*.log

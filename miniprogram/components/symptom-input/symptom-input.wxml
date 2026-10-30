@@ -1,0 +1,16 @@
+<view class="symptom-input card">
+  <text class="symptom-input__label">症状描述</text>
+  <textarea
+    class="symptom-input__area"
+    placeholder="请描述您的症状，如：头痛、发热、咳嗽等"
+    maxlength="{{ maxLength }}"
+    value="{{ value }}"
+    bindinput="onInput"
+  />
+  <view class="symptom-input__foot">
+    <text class="symptom-input__count">{{ value.length }}/{{ maxLength }}</text>
+  </view>
+  <view class="symptom-input__tip-bar">
+    <text class="symptom-input__tip">本功能仅供参考，不能替代医生诊断，如有急症请立即就医</text>
+  </view>
+</view>

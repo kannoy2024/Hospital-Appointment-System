@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "page-nav": "/components/page-nav/page-nav",
+    "star-rating": "/components/star-rating/star-rating",
+    "rate-tags": "/components/rate-tags/rate-tags",
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index"
+  },
+  "navigationStyle": "custom"
+}

@@ -1,0 +1,10 @@
+<view wx:if="{{ !hidden }}" class="visit-progress">
+  <view
+    wx:for="{{ steps }}"
+    wx:key="key"
+    class="visit-progress__item {{ item.done ? 'visit-progress__item--done' : '' }} {{ item.active ? 'visit-progress__item--active' : '' }}"
+  >
+    <view class="visit-progress__dot" />
+    <text class="visit-progress__label">{{ item.label }}</text>
+  </view>
+</view>

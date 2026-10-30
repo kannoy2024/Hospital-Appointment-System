@@ -1,0 +1,61 @@
+.triage-result-card {
+  margin-bottom: var(--spacing-md);
+  border: 1rpx solid rgba(0, 184, 148, 0.08);
+}
+
+.triage-result-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.triage-result-card__rank {
+  font-size: var(--font-small);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  padding: 4rpx 12rpx;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.triage-result-card__icon {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.triage-result-card__img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.triage-result-card__name {
+  font-size: var(--font-subtitle);
+  font-weight: 600;
+  color: var(--color-text);
+  flex: 1;
+  min-width: 0;
+}
+
+.triage-result-card__desc {
+  display: block;
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  margin-bottom: 12rpx;
+  line-height: 1.5;
+}
+
+.triage-result-card__reason {
+  display: block;
+  font-size: var(--font-small);
+  color: var(--color-primary);
+  line-height: 1.6;
+  padding: 12rpx 16rpx;
+  background: var(--color-primary-light);
+  border-radius: var(--radius-sm);
+}

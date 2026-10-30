@@ -1,0 +1,15 @@
+<view class="bottom-bar safe-bottom {{ aboveTab ? 'bottom-bar--above-tab' : '' }} {{ price ? 'bottom-bar--with-price' : '' }}">
+  <view wx:if="{{ price }}" class="bottom-bar__price">
+    <text class="bottom-bar__label">{{ priceLabel || '挂号费' }}</text>
+    <text class="bottom-bar__amount">{{ price }}</text>
+  </view>
+  <van-button
+    type="primary"
+    round
+    block
+    disabled="{{ disabled }}"
+    loading="{{ loading }}"
+    custom-class="bottom-bar__btn"
+    bind:click="onTap"
+  >{{ text }}</van-button>
+</view>

@@ -1,0 +1,7 @@
+<view class="section-title">
+  <text class="section-title__text">{{ title }}</text>
+  <view wx:if="{{ more }}" class="section-title__more" bindtap="onMore">
+    <text>查看更多</text>
+    <van-icon name="arrow" size="12px" color="#999" />
+  </view>
+</view>

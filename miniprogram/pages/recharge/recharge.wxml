@@ -1,0 +1,106 @@
+<view class="page recharge-page">
+  <page-nav title="余额充值" />
+  <view class="balance-card">
+    <text class="balance-card__label">当前余额</text>
+    <text class="balance-card__value">¥{{ balanceText }}</text>
+  </view>
+
+  <view class="card">
+    <view class="card__title">充值金额</view>
+    <view class="amount-grid">
+      <view
+        wx:for="{{ amountOptions }}"
+        wx:key="*this"
+        class="amount-item {{ selectedAmount === item ? 'amount-item--active' : '' }}"
+        data-amount="{{ item }}"
+        bindtap="onAmountTap"
+      >¥{{ item }}</view>
+    </view>
+    <van-field
+      label="自定义"
+      type="digit"
+      value="{{ customAmount }}"
+      placeholder="支持到分，如 0.01"
+      border="{{ false }}"
+      maxlength="8"
+      bind:change="onCustomAmountChange"
+    />
+    <!-- 分位换算回显：提交给后端的是 rechargeAmountFen（分），便于核对精度 -->
+    <view class="amount-hint">
+      <text class="amount-hint__label">实付</text>
+      <text class="amount-hint__yuan">¥{{ rechargeAmountText }}</text>
+      <text class="amount-hint__fen">= {{ rechargeAmountFen }} 分</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">支付方式</view>
+    <view
+      class="pay-item {{ payMethod === item.id ? 'pay-item--active' : '' }} {{ item.disabled ? 'pay-item--disabled' : '' }}"
+      wx:for="{{ payMethods }}"
+      wx:key="id"
+      data-id="{{ item.id }}"
+      bindtap="onPayMethodTap"
+    >
+      <view class="pay-item__left">
+        <view class="pay-item__icon pay-item__icon--{{ item.id }}">{{ item.id === 'wechat' ? '微' : '支' }}</view>
+        <text class="pay-item__name">{{ item.name }}</text>
+      </view>
+      <view class="pay-item__radio {{ payMethod === item.id ? 'pay-item__radio--on' : '' }}"></view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title-row">
+      <text class="card__title card__title--inline">充值记录</text>
+      <text wx:if="{{ logsLoading }}" class="card__hint">加载中...</text>
+    </view>
+    <view wx:if="{{ !logs.length && !logsLoading }}" class="empty-logs">暂无充值记录</view>
+    <view class="log-item" wx:for="{{ logs }}" wx:key="id">
+      <view class="log-item__main">
+        <text class="log-item__title">{{ item.typeText }}</text>
+        <text class="log-item__time">{{ item.createTimeText }}</text>
+      </view>
+      <text class="log-item__amount">+¥{{ item.amountText }}</text>
+    </view>
+  </view>
+
+  <view class="footer safe-bottom">
+    <van-button
+      round
+      block
+      color="#00B894"
+      loading="{{ submitting }}"
+      disabled="{{ submitting }}"
+      bind:click="onRechargeTap"
+    >充值 ¥{{ rechargeAmountText }}</van-button>
+  </view>
+</view>
+
+<pay-drawer
+  wx:if="{{ payDrawerVisible }}"
+  show="{{ payDrawerVisible }}"
+  method="{{ payDrawerMethod }}"
+  amount="{{ rechargeAmountText }}"
+  loading="{{ submitting }}"
+  bind:close="onPayDrawerClose"
+  bind:confirm="onPayDrawerConfirm"
+/>
+
+<!-- 模拟收银台：充值现在也是「先建支付单、再等回调入账」，不再是点完就到账 -->
+<pay-sheet
+  show="{{ paySheetVisible }}"
+  pay-method="{{ paySheetMethod }}"
+  out-trade-no="{{ paySheetOutTradeNo }}"
+  description="{{ paySheetDescription }}"
+  amount-text="{{ paySheetAmountText }}"
+  expire-text="{{ paySheetExpireText }}"
+  busy="{{ paySheetBusy }}"
+  cancel-text="取消（只关闭本次支付，余额不变）"
+  mock-timeout-desc="关闭充值单；余额不变，可重新充值"
+  mock-fail-desc="不请求后端，余额不变，可重新充值"
+  bind:confirm="onPaySheetConfirm"
+  bind:cancel="onPaySheetCancel"
+  bind:mocktimeout="onPaySheetMockTimeout"
+  bind:mockfail="onPaySheetMockFail"
+/>

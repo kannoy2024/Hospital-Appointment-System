@@ -1,0 +1,28 @@
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28rpx 32rpx;
+  background: var(--color-surface);
+  border-bottom: 1rpx solid var(--color-border);
+}
+
+.info-row__label {
+  font-size: var(--font-body);
+  color: var(--color-text);
+}
+
+.info-row__right {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.info-row__value {
+  font-size: var(--font-body);
+  color: var(--color-text);
+}
+
+.info-row__value--placeholder {
+  color: var(--color-text-placeholder);
+}

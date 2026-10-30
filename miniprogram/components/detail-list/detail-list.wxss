@@ -1,0 +1,27 @@
+.detail-list {
+  padding: 0 32rpx;
+}
+
+.detail-list__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid var(--color-border);
+}
+
+.detail-list__row:last-child {
+  border-bottom: none;
+}
+
+.detail-list__label {
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+}
+
+.detail-list__value {
+  font-size: var(--font-body);
+  color: var(--color-text);
+  text-align: right;
+  max-width: 60%;
+}

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "page-nav": "/components/page-nav/page-nav",
+    "ai-hero": "/components/ai-hero/ai-hero",
+    "symptom-input": "/components/symptom-input/symptom-input",
+    "bottom-bar": "/components/bottom-bar/bottom-bar"
+  },
+  "navigationStyle": "custom"
+}
